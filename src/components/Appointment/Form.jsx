@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "components/Button";
 import InterviewerList from "components/InterviewerList";
 
 export default function Form(props) {
-  // const { student, interviewers, interviewer, onSave, onCancel } = props;
+  console.log(props)
+  const [student, setStudent] = useState(props.student || '');
+  const [interviewer, setInterviewer] = useState(props.interviewer || null)
+  const { interviewers, onSave, onCancel, onChange } = props;
+
 
   return (
     <main className="appointment__card appointment__card--create">
@@ -14,20 +18,21 @@ export default function Form(props) {
             name="name"
             type="text"
             placeholder="Enter Student Name"
-            /*
-              This must be a controlled component
-              your code goes here
-            */
+            value={ student }
+            onChange={(e) => setStudent(e.target.value)}
           />
         </form>
-        <InterviewerList 
-          /* your code goes here */
+        <InterviewerList
+          interviewers={ interviewers }
+          onChange={ setInterviewer }
+          value={ interviewer }
+          onChange={ setInterviewer }
         />
       </section>
       <section className="appointment__card-right">
         <section className="appointment__actions">
-          <Button danger>Cancel</Button>
-          <Button confirm>Save</Button>
+          <Button danger onClick={ onCancel } >Cancel</Button>
+          <Button confirm onClick={ onSave } >Save</Button>
         </section>
       </section>
     </main>
