@@ -28,7 +28,7 @@ export default function Application(props) {
     return axios
 			.put(`/api/appointments/${id}`, { interview })
 			.then((res) => { setState(prev => ({ ...prev, appointments })) })
-			.catch((err) => { console.log(err) });
+			// .catch((err) => { console.log(err) });
 
 	}
 
@@ -46,7 +46,7 @@ export default function Application(props) {
     return axios
 			.put(`/api/appointments/${id}`, { interview })
 			.then((res) => { setState(prev => ({ ...prev, appointments })) })
-			.catch((err) => { console.log(err) });
+			// .catch((err) => { console.log(err) });
 
 	}
 
@@ -56,7 +56,7 @@ export default function Application(props) {
       .then((res) => {
         setState((prev) => ({ ...prev }));
       })
-      .catch(err => console.log(err))
+      // .catch((err) => { console.log(err) })
   }
 
   const dailyAppointments = getAppointmentsForDay(state, state.day);
