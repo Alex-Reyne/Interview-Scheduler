@@ -21,7 +21,7 @@ const ERROR_DELETE = 'ERROR_DELETE'
 
 export default function Appointment(props) {
   // console.log('PROPS', props)
-  const { id, time, interview, interviewers, bookInterview, cancelInterview, editInterview } = props;
+  const { id, time, interview, interviewers, bookInterview, cancelInterview, } = props;
   
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
@@ -46,7 +46,7 @@ export default function Appointment(props) {
   }
 
   const deleteInterview = (id) => {
-    transition(DELETING);
+    transition(DELETING, true);
 		cancelInterview(id)
 			.then(() => {
 				transition(EMPTY);
@@ -56,14 +56,8 @@ export default function Appointment(props) {
 			});
   }
   
-  const edit = (id) => {
-		editInterview(id)
-			.then(() => {
-				transition(EDIT);
-			})
-			.catch((err) => {
-				transition(ERROR_SAVE);
-			});
+  const edit = () => {
+		transition(EDIT);
   }
 
   return (
