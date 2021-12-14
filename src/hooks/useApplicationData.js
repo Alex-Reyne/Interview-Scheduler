@@ -63,8 +63,26 @@ export default function useApplicationData() {
 		// }
 
 		function cancelInterview(id) {
+      const appointment = {
+				...state.appointments[id],
+				interview: null,
+			};
+
+      const appointments = {
+				...state.appointments,
+				[id]: appointment,
+			};
+
+      const days = [...state.days];
+
+			const dayIndex = state.days.findIndex((day) =>
+				day.appointments.includes(id)
+			);
+
+			days[dayIndex].spots = getFreeSpots(appointments);
+
 			return axios.delete(`/api/appointments/${id}`).then((res) => {
-				setState((prev) => ({ ...prev }));
+				setState((prev) => ({ ...prev, appointments, days }));
 			});
 			// .catch((err) => { console.log(err) })
 		}
