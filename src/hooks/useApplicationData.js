@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { getAppointmentsForDay } from "helpers/selectors";
 
 export default function useApplicationData() {
     const [state, setState] = useState({
@@ -8,6 +9,14 @@ export default function useApplicationData() {
 			appointments: {},
 			interviewers: {},
 		});
+
+    const getFreeSpots = (appointments) => {
+      const appIDs = state.days.filter(day => day.name === state.day);
+      const todayApp = appIDs[0].appointments;
+      const emptyApp = todayApp.filter(app => !appointments[app].interview).length;
+
+      return emptyApp;
+    }
 
 		function bookInterview(id, interview) {
 			const appointment = {
@@ -20,8 +29,18 @@ export default function useApplicationData() {
 				[id]: appointment,
 			};
 
+      const days = [
+        ...state.days,
+      ]
+
+      const dayIndex = state.days.findIndex((day) =>
+        day.appointments.includes(id)
+      )
+      console.log(appointments)
+      days[dayIndex].spots = getFreeSpots(appointments);
+
 			return axios.put(`/api/appointments/${id}`, { interview }).then((res) => {
-				setState((prev) => ({ ...prev, appointments }));
+        setState((prev) => ({ ...prev, appointments, days }));
 			});
 			// .catch((err) => { console.log(err) });
 		}
