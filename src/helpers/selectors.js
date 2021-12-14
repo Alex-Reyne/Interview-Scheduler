@@ -4,22 +4,20 @@ export function getAppointmentsForDay(state, day) {
   state.days.forEach((item) => {
     if (item.name === day) {
       item.appointments.forEach((appt) => {
-        if (appt.id === state.appointments.id) {
-          appointmentsArr.push(state.appointments[appt]);
-        }
+        appointmentsArr.push(state.appointments[appt]);
       });
     }
   });
-
+  
   return appointmentsArr;
 }
 
 export function getInterview(state, interview) {
-  const { interviewers } = state;
-
   if (!interview) {
     return null;
   }
+
+  const { interviewers } = state;
   
   return { ...interview, interviewer: interviewers[interview.interviewer]};
 }
