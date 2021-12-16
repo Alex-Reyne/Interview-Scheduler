@@ -27,12 +27,12 @@ export default function useApplicationData() {
 		}
 
     const getFreeSpots = (appointments) => {
-			const appointmnentsArray = getAppointmentsForDay(
+			const appointmentsArray = getAppointmentsForDay(
 				{ ...state, appointments },
 				state.day
 			);
 
-			return appointmnentsArray.reduce(
+			return appointmentsArray.reduce(
 				(count, appointment) => (!appointment.interview ? (count += 1) : count),
 				0
 			);
