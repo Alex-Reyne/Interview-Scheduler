@@ -15,15 +15,16 @@ Interview Scheduler is a React app that uses custom hooks and selector functions
 
 ## Stack
 ```sh
+- jsx
 - React
-- Webpack
+- Javascript
 - Babel
-- WebSockets
-- Axios
-- Storybook
-- Webpack Dev Server
 - Jest
-- Testing Library
+- Cypress
+- Storybook
+- Axios
+- Webpack
+- Webpack Dev Server
 ```
 
 ---
@@ -48,3 +49,17 @@ npm test
 ```sh
 npm run storybook
 ```
+---
+## Dependencies
+
+```sh
+- axios | ^0.24.0
+- classnames | ^2.2.6
+- cors | ^2.8.5
+- cypress | ^9.1.1
+- normalize.css | ^8.0.1
+- react | ^16.14.0
+- react-dom | ^16.9.0
+- react-scripts | 3.0.0
+```
+---
