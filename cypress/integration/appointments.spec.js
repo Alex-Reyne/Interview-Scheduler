@@ -38,7 +38,7 @@ describe('Appointments', () => {
 
 		cy.contains('.appointment__card--show', 'Alex Reyne');
 		cy.contains('.appointment__card--show', 'Tori Malcolm');    
-  })
+  });
 
   it('should cancel an interview', () => {
     cy.get('[alt=Delete')
@@ -53,5 +53,5 @@ describe('Appointments', () => {
 
     cy.contains('.appointment__card--show', 'Archie Cohen')
       .should('not.exist');
-  })
+  });
 });

@@ -1,3 +1,6 @@
+
+// finds the appointments for each day and pushes
+// them into a new array to return
 export function getAppointmentsForDay(state, day) {
   const appointmentsArr = [];
 
@@ -12,6 +15,8 @@ export function getAppointmentsForDay(state, day) {
   return appointmentsArr;
 }
 
+// gets the current interview object from state
+// and adds the selected interviewer to it
 export function getInterview(state, interview) {
   if (!interview) {
     return null;
@@ -22,6 +27,7 @@ export function getInterview(state, interview) {
   return { ...interview, interviewer: interviewers[interview.interviewer]};
 }
 
+// gets the interviewers that are assigned for each day.
 export function getInterviewersForDay(state, day) {
 	const interviewerArr = [];
 
